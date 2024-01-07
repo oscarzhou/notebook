@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Frontend Server - List Cats</title>
+  </head>
+  <body>
+    <h1>Listing Cats</h1>
+
+    <ul id="cats"></ul>
+
+    <script>
+      var apiUrl = "http://localhost:8082/cats";
+
+      // Perform the API request using the Fetch API
+      fetch(apiUrl)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to fetch data from API");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          var ul = document.getElementById("cats");
+          data.forEach((cat) => {
+            var li = document.createElement("li");
+            li.innerHTML = `<span>${cat.Name}, ${cat.Age}, ${cat.Color}, ${cat.Breed},  ${cat.Weight}</span>`;
+            ul.appendChild(li);
+          });
+        })
+        .catch((error) => {
+          console.error("API request failed:", error.message);
+        });
+    </script>
+  </body>
+</html>
