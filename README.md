@@ -1,2 +1,2 @@
 # notebook
-examples displayed in my notebook 
+examples shown in my notebook 
