@@ -14,9 +14,8 @@ func TestHandleGetDog(t *testing.T) {
 	}
 
 	rr := httptest.NewRecorder()
-	handler := http.HandlerFunc(HandleGetDog)
 
-	handler.ServeHTTP(rr, req)
+	HandleGetDog(rr, req)
 
 	if status := rr.Code; status != http.StatusOK {
 		t.Errorf("handler returned wrong status code: got %v want %v", status, http.StatusOK)
